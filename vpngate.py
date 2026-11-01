@@ -87,7 +87,9 @@ EDGE_HOSTS = [
         "EDGE_HOSTS",
         "saas.sin.fan:443,cdn.204910.best:443,www.mfyx.cn:443,p.etime.vip:443,cdn.ctn32.us.kg:443,cf.877774.xyz:443,spring.io:443,"
         "cf.nyanya.moe:443,www.sloomb.com:443,op.chinwa.eu.cc:443,www.leics.police.uk:443,securecircle.com:443,www.shopify.com:443,"
-        "www.carousell.sg:443,www.dbs.com.sg:443,openai.com:443,linear.app:443,www.bilibili.com:443,uspto.gov:443,www.vmware.com:443",
+        "www.carousell.sg:443,www.dbs.com.sg:443,openai.com:443,linear.app:443,www.bilibili.com:443,uspto.gov:443,www.vmware.com:443"
+        "cf.0sm.com:2087,www.hugedomains.com:443,cfip.1323123.xyz:2083,cf.qq.ms:2053,pttime.org:443,cloudflare-ip.mofashi.ltd:2083"
+        "www.swowd.com:2053,cnllm.com:2083,cdn.2x.nz:8443,www.npmjs.com:2053,dnew.cc:8443,www.nomios.com:8443,my.vultr.com:2083",
     ).split(",")
     if h.strip()
 ]
