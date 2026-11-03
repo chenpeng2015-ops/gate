@@ -3,8 +3,8 @@ name: VPN Gate Node Check
 on:
   workflow_dispatch:
   # 测试通过后，把下面两行取消注释，恢复每天 08:00（北京时间）自动跑：
-  # schedule:
-  #   - cron: "0 0 * * *"
+  schedule:
+      - cron: "0 0/6 * * *"
 
 permissions:
   contents: read
