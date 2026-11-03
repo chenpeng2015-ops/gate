@@ -1,4 +1,4 @@
-# VPNGate SSTP 家宽节点（edgetunnel 链式代理） 🚀
+# VPNGate SSTP 家宽节点 🚀
 
 自动抓取 [VPN Gate](https://www.vpngate.net/) 的 SSTP 家宽/机房节点，逐个验证可用性，按国家分组、标注住宅/机房，生成可直接通过 **URL 自动轮换** 的节点清单。**每 6 小时自动更新一次。**
 
