@@ -57,6 +57,8 @@ jobs:
           CHECK_WORKER: "http://127.0.0.1:8787/check?sstp=vpn:vpn@"
           CHECK_CONCURRENCY: "32"
           CHECK_TIMEOUT: "90"
+          HOSTS_ENTRY: ""
+
 
       - name: Stop local check Worker
         if: always()
