@@ -85,11 +85,11 @@ EDGE_HOSTS = [
     h.strip()
     for h in os.environ.get(
         "EDGE_HOSTS",
-        "saas.sin.fan:443,cdn.204910.best:443,www.mfyx.cn:443,p.etime.vip:443,cdn.ctn32.us.kg:443,cf.877774.xyz:443,spring.io:443,"
-        "cf.nyanya.moe:443,www.sloomb.com:443,op.chinwa.eu.cc:443,www.leics.police.uk:443,securecircle.com:443,www.shopify.com:443,"
-        "www.carousell.sg:443,www.dbs.com.sg:443,openai.com:443,linear.app:443,www.bilibili.com:443,uspto.gov:443,www.vmware.com:443"
-        "cf.0sm.com:2087,www.hugedomains.com:443,cfip.1323123.xyz:2083,cf.qq.ms:2053,pttime.org:443,cloudflare-ip.mofashi.ltd:2083"
-        "www.swowd.com:2053,cnllm.com:2083,cdn.2x.nz:8443,www.npmjs.com:2053,dnew.cc:8443,www.nomios.com:8443,my.vultr.com:2083",
+        "pttime.org:443,dnew.cc:2087,kniu.cc:2083,my.vultr.com:443,www.mlkj888.com:8443,cf.vvhan.com:8443,cnllm.com:443,cf.777791.xyz:2053",
+        "www.canadatype.com:2087,mvnrepository.com:2083,www.5h.com:8443,www.speedtest.net:8443,db-ip.com:443,hentaiverse.org:443,singapore.com:2096",
+        "www.npmjs.com:8443,cf.1o.ee:2083,assets.bizclikmedia.net:443,time.is:2096,investor.apple.com:443,www.petronaftco.com:443,www.meteorelectrical.com:2083",
+        "101yaoye.com:2096,www.ventusky.com:2087,www.redboxtools.com:2053,dogechain.info:2096,www.hugedomains.com:2083,cdn.cnno.de:2053,dx.doi.org:2096",
+        "syncfusion.com:2096,www.postman.com:2096,a.pub.network:2096,www.scayle.com:8443,cloudflare.tv:2096,cf2.996616.xyz:2083",
     ).split(",")
     if h.strip()
 ]
