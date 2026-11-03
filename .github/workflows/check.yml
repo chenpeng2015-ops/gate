@@ -2,6 +2,9 @@ name: VPN Gate Node Check
 
 on:
   workflow_dispatch:
+  # 测试通过后，把下面两行取消注释，恢复每天 08:00（北京时间）自动跑：
+  # schedule:
+  #   - cron: "0 0 * * *"
 
 permissions:
   contents: read
@@ -28,13 +31,38 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Get VPN Gate nodes + check via Cloudflare Worker + build page
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Start local check Worker (workerd, no Cloudflare account needed)
+        run: |
+          npx --yes wrangler@latest dev --port 8787 > wrangler.log 2>&1 &
+          echo $! > wrangler.pid
+          echo "waiting for local worker on 127.0.0.1:8787 ..."
+          for i in $(seq 1 30); do
+            if curl -s -m 5 http://127.0.0.1:8787/ip.json > /dev/null; then
+              echo "local worker is up"
+              break
+            fi
+            sleep 2
+          done
+          curl -s -m 10 http://127.0.0.1:8787/ip.json || (echo "local worker did not start"; cat wrangler.log; exit 1)
+
+      - name: Get VPN Gate nodes + check locally + build page
         run: python vpngate.py
         env:
-          # 已部署的检测 Worker (不要改动: 检测统一走这里)
-          CHECK_WORKER: "${{ secrets.DOMAIN }}"
+          # 不再走远程 Cloudflare Worker，改走本地 workerd，DOMAIN Secret 不再需要
+          CHECK_WORKER: "http://127.0.0.1:8787/check?sstp=vpn:vpn@"
           CHECK_CONCURRENCY: "32"
           CHECK_TIMEOUT: "90"
+
+      - name: Stop local check Worker
+        if: always()
+        run: |
+          kill $(cat wrangler.pid) 2>/dev/null || true
+          cat wrangler.log | tail -50 || true
 
       - name: Ensure GitHub Pages is enabled (one-time auto setup)
         run: |
@@ -68,4 +96,4 @@ jobs:
         uses: actions/deploy-pages@v4
 
       - name: Show site URL
-        run: 'echo "site: https://xxx.github.io/gate/ (deploy outcome: ${{ steps.deployment.outcome }})"'
+        run: 'echo "site: https://chenpeng2015-ops.github.io/gate/ (deploy outcome: ${{ steps.deployment.outcome }})"'
